@@ -9,23 +9,37 @@ const ExpenseForm = () => {
     });
 
     const titleChangeHandler = (event) => {
-        setNewExense({
-            ...newExpense,
-            title: event.target.value,
+        // Don't use this way: could have a previous out of date version of the state, as it is a scheduled value
+        // setNewExense({
+        //     ...newExpense,
+        //     title: event.target.value,
+        // });
+
+        // Use this instead: react guarantees it is the last version of the state
+        setNewExense((prevState) => {
+            console.log(prevState);
+            return {
+                ...prevState,
+                title: event.target.value,
+            };
         });
     };
 
     const amountChangeHandler = (event) => {
-        setNewExense({
-            ...newExpense,
-            amount: event.target.value,
+        setNewExense((prevState) => {
+            return {
+                ...prevState,
+                amount: event.target.value,
+            };
         });
     };
 
     const dateChangeHandler = (event) => {
-        setNewExense({
-            ...newExpense,
-            date: event.target.value,
+        setNewExense((prevState) => {
+            return {
+                ...prevState,
+                date: event.target.value,
+            };
         });
     };
 
