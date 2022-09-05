@@ -2,45 +2,20 @@ import { useState } from 'react';
 import './ExpenseForm.css';
 
 const ExpenseForm = () => {
-    const [newExpense, setNewExense] = useState({
-        title: '',
-        amount: '',
-        date: '',
-    });
+    const [newTitle, setNewTitle] = useState('');
+    const [newAmount, setNewAmount] = useState('');
+    const [newDate, setNewDate] = useState('');
 
     const titleChangeHandler = (event) => {
-        // Don't use this way: could have a previous out of date version of the state, as it is a scheduled value
-        // setNewExense({
-        //     ...newExpense,
-        //     title: event.target.value,
-        // });
-
-        // Use this instead: react guarantees it is the last version of the state
-        setNewExense((prevState) => {
-            console.log(prevState);
-            return {
-                ...prevState,
-                title: event.target.value,
-            };
-        });
+        setNewTitle(event.target.value);
     };
 
     const amountChangeHandler = (event) => {
-        setNewExense((prevState) => {
-            return {
-                ...prevState,
-                amount: event.target.value,
-            };
-        });
+        setNewAmount(event.target.value);
     };
 
     const dateChangeHandler = (event) => {
-        setNewExense((prevState) => {
-            return {
-                ...prevState,
-                date: event.target.value,
-            };
-        });
+        setNewDate(event.target.value);
     };
 
     return (
