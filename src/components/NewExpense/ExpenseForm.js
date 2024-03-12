@@ -37,13 +37,14 @@ const ExpenseForm = ({ onSaveExpenseData, onCancel }) => {
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
-          <label>Title</label>
-          <input type="text" value={newTitle} onChange={titleChangeHandler} />
+          <label htmlFor="title">Title</label>
+          <input type="text" name="title" value={newTitle} onChange={titleChangeHandler} />
         </div>
         <div className="new-expense__control">
-          <label>Amount</label>
+          <label htmlFor="amount">Amount</label>
           <input
             type="number"
+            name="amount"
             min="0.01"
             step="0.01"
             value={newAmount}
@@ -51,9 +52,10 @@ const ExpenseForm = ({ onSaveExpenseData, onCancel }) => {
           />
         </div>
         <div className="new-expense__control">
-          <label>Date</label>
+          <label htmlFor="date">Date</label>
           <input
             type="date"
+            name="date"
             min="2019-01-01"
             max="2025-12-31"
             value={newDate}
